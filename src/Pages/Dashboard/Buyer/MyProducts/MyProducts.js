@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../../contexts/AuthProvider';
+import useTitle from '../../../../Hooks/UseTitle/useTitle';
 import Loading from '../../../Shared/Loading/Loading';
 
 const MyProducts = () => {
+    useTitle('My Products')
     const { user } = useContext(AuthContext)
     const [myProducts, SetMyProducts] = useState([])
     const [loading, setLoading] = useState(true)

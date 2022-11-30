@@ -2,8 +2,10 @@ import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../contexts/AuthProvider';
+import useTitle from '../../../../Hooks/UseTitle/useTitle';
 
 const AddProduct = () => {
+    useTitle("Add Product")
     const { user } = useContext(AuthContext)
     const imageHostKey = process.env.REACT_APP_image
     const [img, setImg] = useState(null)

@@ -3,9 +3,11 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
+import useTitle from "../../Hooks/UseTitle/useTitle";
 import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Login = () => {
+    useTitle('Login')
     const { register, formState: { errors }, handleSubmit, } = useForm();
     const { signIn } = useContext(AuthContext);
     const [loginError, setLoginError] = useState('');

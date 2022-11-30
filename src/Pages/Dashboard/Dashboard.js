@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
+import useTitle from '../../Hooks/UseTitle/useTitle';
 import Navbar from '../Shared/Navbar/Navbar';
 
 const Dashboard = () => {
+    useTitle('Dashboard')
     const [duser, setDuser] = useState([])
     const { user } = useContext(AuthContext)
 
