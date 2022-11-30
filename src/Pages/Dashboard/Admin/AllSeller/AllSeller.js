@@ -2,9 +2,13 @@ import React, { useEffect, useState } from 'react';
 
 const Users = () => {
     const [allSeller, setAllSeller] = useState([])
-    
+
     useEffect(() => {
-        fetch('http://localhost:5000/users')
+        fetch('http://localhost:5000/users', {
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then(res => res.json())
             .then(data => setAllSeller(data))
     }, [])

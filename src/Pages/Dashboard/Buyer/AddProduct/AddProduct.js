@@ -8,14 +8,14 @@ const AddProduct = () => {
     useTitle("Add Product")
     const { user } = useContext(AuthContext)
     const imageHostKey = process.env.REACT_APP_image
-    const [img, setImg] = useState(null)
+    const [img, setImg] = useState('')
     const navigate = useNavigate()
 
     const handelAddProduct = (event) => {
         event.preventDefault();
 
         const form = event.target;
-        const email = user.email;
+        const onerEmail = user.email;
 
         const title = form.title.value;
         const ProductCondition = form.ProductCondition.value;
@@ -25,7 +25,7 @@ const AddProduct = () => {
         const location = form.location.value;
         const yearsOfUse = form.yearsOfUse.value;
         const details = form.details.value;
-        let categoryId = null;
+        let categoryId = "1";
 
         const image = form.image.files[0];
         const formData = new FormData();
@@ -43,7 +43,7 @@ const AddProduct = () => {
                 }
             })
 
-        const addProduct = { email, title, categoryId, img, ProductCondition, category, resalePrice, originalPrice, location, yearsOfUse, details }
+        const addProduct = { onerEmail, title, categoryId, img, ProductCondition, category, resalePrice, originalPrice, location, yearsOfUse, details }
 
         console.log(addProduct)
 

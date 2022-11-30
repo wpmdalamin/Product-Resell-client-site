@@ -8,8 +8,9 @@ const MyProducts = () => {
     const { user } = useContext(AuthContext)
     const [myProducts, SetMyProducts] = useState([])
     const [loading, setLoading] = useState(true)
+    
     useEffect(() => {
-        fetch(`http://localhost:5000/products?email=${user?.email}`)
+        fetch(`http://localhost:5000/product?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 SetMyProducts(data)
@@ -17,9 +18,18 @@ const MyProducts = () => {
             })
     }, [user?.email])
 
+    console.log("my products" , myProducts)
+
+    const handelAdvertise = (id) => {
+        console.log(id)
+    }
+
+
     if(loading){
         return <Loading></Loading>
     }
+
+
     return (
         <div className='mt-8'>
             <h3 className='text-3xl text-center my-3'>My Products</h3>
@@ -38,6 +48,7 @@ const MyProducts = () => {
                                         <th>Price</th>
                                         <th>Location</th>
                                         <th>Years Of Used</th>
+                                        <th>Advertisement</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -50,6 +61,18 @@ const MyProducts = () => {
                                             <td>${myproduct.resalePrice}</td>
                                             <td>{myproduct.location}</td>
                                             <td>{myproduct.yearsOfUse}</td>
+                                            <td>
+                                                {
+                                                    myproduct.advertisement === 'true' ?
+                                                    <>
+                                                        <button onClick={() => handelAdvertise(myproduct._id)} className='btn btn-xs'>Advertise</button>
+                                                    </>
+                                                    :
+                                                    <>
+                                                        <button className='btn btn-xs'>All Ready AD</button>
+                                                    </>
+                                                }
+                                            </td>
                                         </tr>)
                                     }
                                 </tbody>

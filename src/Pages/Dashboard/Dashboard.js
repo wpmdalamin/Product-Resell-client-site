@@ -2,19 +2,29 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import useTitle from '../../Hooks/UseTitle/useTitle';
+import Loading from '../Shared/Loading/Loading';
 import Navbar from '../Shared/Navbar/Navbar';
 
 const Dashboard = () => {
     useTitle('Dashboard')
-    const [duser, setDuser] = useState([])
-    const { user } = useContext(AuthContext)
 
+    const { user } = useContext(AuthContext)
+    const [duser, setDuser] = useState([])
+
+    
+    const [loading, setLoading] = useState(true)
     useEffect(() => {
         fetch(`http://localhost:5000/user?email=${user?.email}`)
             .then(res => res.json())
-            .then(data => setDuser(data))
+            .then(data => {
+                setDuser(data)
+                setLoading(false)
+            })
     }, [user?.email])
 
+    if(loading){
+        return <Loading></Loading>
+    }
     return (
         <div>
             <Navbar></Navbar>
