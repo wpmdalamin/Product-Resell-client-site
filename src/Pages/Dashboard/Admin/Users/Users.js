@@ -4,7 +4,11 @@ const Users = () => {
     const [alluser, setAlluser] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/users')
+        fetch('http://localhost:5000/users', {
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then(res => res.json())
             .then(data => setAlluser(data))
     }, [])
