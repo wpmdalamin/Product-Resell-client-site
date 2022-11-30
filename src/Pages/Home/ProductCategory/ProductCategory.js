@@ -6,7 +6,7 @@ const ProductCategory = () => {
     
 
     useEffect(() => {
-        fetch(`http://localhost:5000/categorys`)
+        fetch(`https://product-server-omega.vercel.app/categorys`)
             .then(res => res.json())
             .then(data => setCategorys(data))
     }, [])

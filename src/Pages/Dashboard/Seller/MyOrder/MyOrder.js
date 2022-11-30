@@ -7,7 +7,7 @@ const MyOrder = () => {
     const [bookings, setBookings] = useState([])
     const [loading, setLoading] = useState(true)
     useEffect(() => {
-        fetch(`http://localhost:5000/booknow?email=${user?.email}`, {
+        fetch(`https://product-server-omega.vercel.app/booknow?email=${user?.email}`, {
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
             }

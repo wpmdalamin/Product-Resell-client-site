@@ -19,7 +19,7 @@ const Modal = ({ product }) => {
         const phone = form.phone.value;
         const location = form.location.value;
         const booknow = { name, email, title, price, location, phone }
-        fetch('http://localhost:5000/booknow', {
+        fetch('https://product-server-omega.vercel.app/booknow', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -59,13 +59,13 @@ const Modal = ({ product }) => {
                     <h3 className="text-lg font-bold">{product?.title}</h3>
                     <form onSubmit={handelBookNow}>
                         <label htmlFor="">Name</label>
-                        <input name="name" type="text" defaultValue={user?.displayName} placeholder="Name" className="input input-bordered input-primary w-full mb-3" />
+                        <input name="name" type="text" disabled  defaultValue={user?.displayName} placeholder="Name" className="input input-bordered input-primary w-full mb-3" />
                         <label htmlFor="">Email</label>
-                        <input name="email" type="email" defaultValue={user?.email} placeholder="Email" className="input input-bordered input-primary w-full mb-3" />
+                        <input name="email" type="email" disabled defaultValue={user?.email} placeholder="Email" className="input input-bordered input-primary w-full mb-3" />
                         <label htmlFor="">Price</label>
-                        <input name="price" type="text" defaultValue={resalePrice} placeholder="Price" className="input input-bordered input-primary w-full mb-3" />
+                        <input name="price" type="text" disabled defaultValue={resalePrice} placeholder="Price" className="input input-bordered input-primary w-full mb-3" />
                         <label htmlFor="">Location</label>
-                        <input name="location" type="text" defaultValue={location} placeholder="Location" className="input input-bordered input-primary w-full mb-3" />
+                        <input name="location" type="text" disabled defaultValue={location} placeholder="Location" className="input input-bordered input-primary w-full mb-3" />
                         <label htmlFor="">Phone</label>
                         <input name="phone" type="text" placeholder="Phone Number" className="input input-bordered input-primary w-full mb-3" />
 

@@ -14,7 +14,7 @@ const Dashboard = () => {
     
     const [loading, setLoading] = useState(true)
     useEffect(() => {
-        fetch(`http://localhost:5000/user?email=${user?.email}`)
+        fetch(`https://product-server-omega.vercel.app/user?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setDuser(data)

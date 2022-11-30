@@ -48,7 +48,7 @@ const AddProduct = () => {
 
         const addProduct = { onerEmail, onerName, advertisement, title, categoryId, img, ProductCondition, category, resalePrice, originalPrice, location, yearsOfUse, details }
 
-        fetch('http://localhost:5000/products', {
+        fetch('https://product-server-omega.vercel.app/products', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
