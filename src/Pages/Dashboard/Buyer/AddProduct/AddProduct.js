@@ -7,6 +7,7 @@ import useTitle from '../../../../Hooks/UseTitle/useTitle';
 const AddProduct = () => {
     useTitle("Add Product")
     const { user } = useContext(AuthContext)
+
     const imageHostKey = process.env.REACT_APP_image
     const [img, setImg] = useState('')
     const navigate = useNavigate()
@@ -16,6 +17,7 @@ const AddProduct = () => {
 
         const form = event.target;
         const onerEmail = user.email;
+        const onerName = user.DisplayName;
 
         const title = form.title.value;
         const ProductCondition = form.ProductCondition.value;
@@ -26,6 +28,7 @@ const AddProduct = () => {
         const yearsOfUse = form.yearsOfUse.value;
         const details = form.details.value;
         let categoryId = "1";
+        const advertisement = "";
 
         const image = form.image.files[0];
         const formData = new FormData();
@@ -43,9 +46,7 @@ const AddProduct = () => {
                 }
             })
 
-        const addProduct = { onerEmail, title, categoryId, img, ProductCondition, category, resalePrice, originalPrice, location, yearsOfUse, details }
-
-        console.log(addProduct)
+        const addProduct = { onerEmail, onerName, advertisement, title, categoryId, img, ProductCondition, category, resalePrice, originalPrice, location, yearsOfUse, details }
 
         fetch('http://localhost:5000/products', {
             method: 'POST',
