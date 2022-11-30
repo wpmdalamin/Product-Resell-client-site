@@ -5,7 +5,7 @@ const Advertisement = () => {
     const advertisement = 'true';
     const [advertisementData, setAdvertisementData] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/ads-product?advertisement=${advertisement}`)
+        fetch(`https://product-server-omega.vercel.app/ads-product?advertisement=${advertisement}`)
             .then(res => res.json())
             .then(data => {
                 console.log("advertisement products ", data)

@@ -6,7 +6,7 @@ const Admin = () => {
     useTitle('Admin')
     return (
         <div>
-            <h3 className='text-3xl text-center'>Admin</h3>
+            {/* <h3 className='text-3xl text-center'>Admin</h3> */}
             <Users></Users>
         </div>
     );

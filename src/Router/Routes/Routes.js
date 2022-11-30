@@ -45,7 +45,7 @@ const router = createBrowserRouter([
       {
         path: '/category/:id',
         element: <ProductsByCategory></ProductsByCategory>,
-        loader: ({ params }) => fetch(`http://localhost:5000/categorys-products/${params.id}`),
+        loader: ({ params }) => fetch(`https://product-server-omega.vercel.app/categorys-products/${params.id}`),
       },
       {
         path: '/all-product',
@@ -54,7 +54,7 @@ const router = createBrowserRouter([
       {
         path: '/product/:id',
         element: <PrivateRoute><ProductDetails></ProductDetails></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`),
+        loader: ({ params }) => fetch(`https://product-server-omega.vercel.app/products/${params.id}`),
       }
     ],
   },

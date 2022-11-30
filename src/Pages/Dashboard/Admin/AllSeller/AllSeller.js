@@ -7,7 +7,7 @@ const Users = () => {
     const role = "seller"
 
     useEffect(() => {
-        fetch(`http://localhost:5000/seller?role=${role}`, {
+        fetch(`https://product-server-omega.vercel.app/seller?role=${role}`, {
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
             }
@@ -18,7 +18,7 @@ const Users = () => {
 
     // console.log("all Seller", allSeller)
     const handelDeleteUser = (id) => {
-        fetch(`http://localhost:5000/users/${id}`, {
+        fetch(`https://product-server-omega.vercel.app/users/${id}`, {
             method: 'DELETE', 
             // headers: {
             //     authorization: `bearer ${localStorage.getItem('accessToken')}`

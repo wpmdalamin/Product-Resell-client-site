@@ -1,22 +1,42 @@
 import React, { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 
 const Users = () => {
     const [alluser, setAlluser] = useState([])
-    const user = "";
+    
+    const [deleteUser, setDeleteUser] = useState('')
+    const role = "buyer";
 
     useEffect(() => {
-        fetch('http://localhost:5000/users', {
+        fetch(`https://product-server-omega.vercel.app/admin-users?role=${role}`, {
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
             }
         })
             .then(res => res.json())
             .then(data => setAlluser(data))
-    }, [])
+    }, [deleteUser])
+
+    const handelDeleteUser = (id) => {
+        fetch(`https://product-server-omega.vercel.app/users/${id}`, {
+            method: 'DELETE', 
+            // headers: {
+            //     authorization: `bearer ${localStorage.getItem('accessToken')}`
+            // }
+        })
+        .then(res => res.json())
+        .then(data => {
+            setDeleteUser(data.deletedCount)
+            console.log("delete user",data)
+            if(data.deletedCount > 0){
+                toast.success(`User deleted successfully`)
+            }
+        })
+    }
 
     return (
         <div>
-            <h3>All Users</h3>
+            <h3 className='text-3xl my-3'>All Users</h3>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
@@ -35,7 +55,7 @@ const Users = () => {
                                 <td>{singleuser.name}</td>
                                 <td>{singleuser.email}</td>
                                 <td>{singleuser.role}</td>
-                                <td><button className='btn btn-sm'>Delete</button></td>
+                                <td><button onClick={() => handelDeleteUser(singleuser._id)} className='btn btn-sm'>Delete</button></td>
                             </tr>)
                         }
                         

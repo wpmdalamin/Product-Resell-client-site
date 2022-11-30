@@ -19,7 +19,7 @@ const Modal = ({ product }) => {
         const phone = form.phone.value;
         const location = form.location.value;
         const booknow = { name, email, title, price, location, phone }
-        fetch('http://localhost:5000/booknow', {
+        fetch('https://product-server-omega.vercel.app/booknow', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

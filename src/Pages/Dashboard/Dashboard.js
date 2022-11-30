@@ -14,7 +14,7 @@ const Dashboard = () => {
     
     const [loading, setLoading] = useState(true)
     useEffect(() => {
-        fetch(`http://localhost:5000/user?email=${user?.email}`)
+        fetch(`https://product-server-omega.vercel.app/user?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setDuser(data)
@@ -43,7 +43,7 @@ const Dashboard = () => {
                             {
                                 duser.role === "seller" &&
                                 <>
-                                    <Link className='' to="/dashboard/seller">Seller</Link>
+                                    <Link className='text-3xl' to="/dashboard/seller">Seller</Link>
                                     <Link to="/dashboard/add-product">Add Product</Link>
                                     <Link to="/dashboard/my-products">My Products</Link>
                                 </>
@@ -52,7 +52,7 @@ const Dashboard = () => {
                             {
                                 duser.role === "admin" &&
                                 <>
-                                    <Link to="/dashboard/admin/">Admin</Link>
+                                    <Link className='text-3xl' to="/dashboard/admin/">Admin</Link>
                                     <Link to="/dashboard/admin/">All Users</Link>
                                     <Link to="/dashboard/admin/all-seller">All Seller</Link>
 
@@ -61,7 +61,7 @@ const Dashboard = () => {
                             {
                                 duser.role !== "admin" && duser.role !== "seller" &&
                                 <>
-                                    <Link to="/dashboard/buyer">Buyer</Link>
+                                    <Link className='text-3xl' to="/dashboard/buyer">Buyer</Link>
                                     <Link to="/dashboard/buyer">My Booking</Link>
                                 </>
                             }

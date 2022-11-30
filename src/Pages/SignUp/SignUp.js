@@ -43,7 +43,7 @@ const SignUp = () => {
     };
     const saveUser = (name, email, role) => {
         const user = { name, email, role }
-        fetch('http://localhost:5000/user', {
+        fetch('https://product-server-omega.vercel.app/user', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
