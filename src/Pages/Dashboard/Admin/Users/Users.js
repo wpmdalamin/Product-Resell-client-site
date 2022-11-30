@@ -4,7 +4,7 @@ const Users = () => {
     const [alluser, setAlluser] = useState([])
 
     useEffect(() => {
-        fetch('https://product-server-omega.vercel.app/users', {
+        fetch('http://localhost:5000/users', {
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
             }

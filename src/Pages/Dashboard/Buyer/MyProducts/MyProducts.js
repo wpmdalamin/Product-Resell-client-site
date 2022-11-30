@@ -10,7 +10,7 @@ const MyProducts = () => {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        fetch(`https://product-server-omega.vercel.app/product?email=${user?.email}`)
+        fetch(`http://localhost:5000/product?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 SetMyProducts(data)
