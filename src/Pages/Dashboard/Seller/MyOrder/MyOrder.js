@@ -1,15 +1,27 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../../contexts/AuthProvider';
+import Loading from '../../../Shared/Loading/Loading';
 
 const MyOrder = () => {
     const { user } = useContext(AuthContext)
     const [bookings, setBookings] = useState([])
-    console.log(bookings)
+    const [loading, setLoading] = useState(true)
     useEffect(() => {
-        fetch(`http://localhost:5000/booknow?email=${user?.email}`)
+        fetch(`http://localhost:5000/booknow?email=${user?.email}`, {
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then(res => res.json())
-            .then(data => setBookings(data))
+            .then(data => {
+                setBookings(data)
+                setLoading(false)
+            })
     }, [user?.email])
+
+    if(loading){
+        return <Loading></Loading>
+    }
     return (
         <div>
             <h3 className='text-2xl text-center'>My Booking</h3>
