@@ -4,9 +4,10 @@ import toast from 'react-hot-toast';
 const Users = () => {
     const [allSeller, setAllSeller] = useState([])
     const [deleteUser, setDeleteUser] = useState('')
+    const role = "seller"
 
     useEffect(() => {
-        fetch('http://localhost:5000/users', {
+        fetch(`http://localhost:5000/seller?role=${role}`, {
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
             }
@@ -35,7 +36,7 @@ const Users = () => {
 
     return (
         <div>
-            <h3 className='text-3xl'>All Seller</h3>
+            <h3 className='text-3xl my-5'>All Seller</h3>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
